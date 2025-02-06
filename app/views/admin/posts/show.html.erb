@@ -29,6 +29,12 @@
           <dt class="text-sm font-medium text-gray-500 mb-2">Body</dt>
           <dd class="mt-1 text-sm text-gray-900 prose max-w-none"><%= @post.body %></dd>
         </div>
+        <div class="py-4">
+          <dt class="text-sm font-medium text-gray-500 mb-2">Tags</dt>
+          <dd class="mt-1 text-sm text-gray-900">
+            <%= @post.tags.map(&:name).join(', ') %>
+          </dd>
+        </div>
       </dl>
     </div>
   </div>
