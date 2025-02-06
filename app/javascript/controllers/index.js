@@ -12,3 +12,6 @@ application.register("multi-select", MultiSelectController);
 
 import TypeAheadSelectController from "./type_ahead_select_controller";
 application.register("type-ahead-select", TypeAheadSelectController);
+
+import FlashController from "./flash_controller";
+application.register("flash", FlashController);
