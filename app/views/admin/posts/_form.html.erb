@@ -53,6 +53,18 @@
     <%= f.label :body, class: "block text-sm font-medium text-gray-700" %>
     <%= f.text_area :body, rows: 10, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
   </div>
+  <div class="mb-4 p-4 border border-slate-300 rounded shadow-md bg-slate-100 my-4">
+    <h3 class="font-bold text-lg mb-2">Tags</h3>
+    <%= f.collection_select :tag_ids,
+        Tag.all, :id, :name,
+        { selected: post.tag_ids },
+        {
+          multiple: true,
+          class: 'w-full p-2 rounded-md',
+          data: { controller: "multi-select", multi_select_create_url_value: admin_tags_path, multi_select_create_type_value: "tag" }
+        }
+      %>
+  </div>
   <div class="flex justify-end">
     <%= link_to 'Cancel', admin_posts_path, class: "mr-3 inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     <%= f.submit class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>

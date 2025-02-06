@@ -9,6 +9,14 @@ class Post < ApplicationRecord
   # Callbacks
   before_validation :set_published_on, if: -> { published? }
 
+  # Associations
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
+
+  # Validations
+  accepts_nested_attributes_for :tags, allow_destroy: true, reject_if: :all_blank
+  validates_associated :tags
+
   # Scopes
   scope :published, -> { where(published: true) }
 

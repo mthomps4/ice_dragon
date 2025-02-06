@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     }) do
       root to: "posts#index"
       resources :posts
+      resources :tags, only: [ :index, :create, :destroy ]
     end
   end
 end

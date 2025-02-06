@@ -25,6 +25,10 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
   end
 
+  # https://stackoverflow.com/questions/73902158/stimulus-controllers-not-functioning-at-all-in-rails-7-app
+  # At some point, changes in stimulus controllers were not working: nothing happened... And new controllers were not registered anymore.
+  config.assets.digest = false
+
   # Change to :null_store to avoid any caching.
   config.cache_store = :memory_store
 

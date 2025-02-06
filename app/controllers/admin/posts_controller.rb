@@ -47,6 +47,6 @@ class Admin::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :body, :published, :published_on, :publication)
+    params.require(:post).permit(:title, :description, :body, :published, :published_on, :publication, tag_ids: [])
   end
 end
