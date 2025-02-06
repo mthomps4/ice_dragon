@@ -39,6 +39,7 @@ export default class extends Controller {
               name: option,
             },
           }),
+          responseKind: "json",
         });
         if (response.ok) {
           const { record } = await response.json;

@@ -1,4 +1,4 @@
-class Admin::TagsController < ApplicationController
+class Admin::TagsController < AdminController
   def index
     @tags = Tag.all
   end
@@ -6,11 +6,14 @@ class Admin::TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
 
-    if @tag.save
-      # respond for multi-select stimulus
-      render json: { record: @tag }, status: :created
-    else
-      render json: { errors: @tag.errors.full_messages }, status: :unprocessable_entity
+    respond_to do |format|
+      if @tag.save
+        format.html { redirect_to admin_tags_path, notice: "Tag created successfully" }
+        format.json { render json: { record: @tag }, status: :created }
+      else
+        format.html { redirect_to admin_tags_path, alert: "Tag creation failed", status: :unprocessable_entity }
+        format.json { render json: { errors: @tag.errors.full_messages }, status: :unprocessable_entity }
+      end
     end
   end
 

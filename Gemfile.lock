@@ -422,6 +422,7 @@ DEPENDENCIES
   kamal
   pg (~> 1.1)
   propshaft
+  pry
   puma (>= 5.0)
   rails (~> 8.0.1)
   rails-controller-testing
