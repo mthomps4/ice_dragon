@@ -10,5 +10,14 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "posts#index"
+
+  namespace :admin do
+    constraints(lambda { |req|
+      req.user_agent !~ /\b(bot|crawler|spider)\b/i
+    }) do
+      root to: "posts#index"
+      resources :posts
+    end
+  end
 end

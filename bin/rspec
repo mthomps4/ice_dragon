@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# This script is a runner for CI to execute RSpec tests and prepare the database.
+
+# Exit immediately if any command fails
+set -e
+
+# Exit on undefined variables
+set -u
+
+# Print each command before executing (helpful for CI debugging)
+set -x
+
+echo "==> Running RSpec tests..."
+RAILS_ENV=test bundle exec rspec "$@"
