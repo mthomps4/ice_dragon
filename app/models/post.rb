@@ -17,6 +17,9 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :tags, allow_destroy: true, reject_if: :all_blank
   validates_associated :tags
 
+  has_many :collection_posts, dependent: :destroy
+  has_many :collections, through: :collection_posts
+
   # Scopes
   scope :published, -> { where(published: true) }
 

@@ -45,6 +45,6 @@ class Admin::CollectionsController < AdminController
   end
 
   def collection_params
-    params.require(:collection).permit(:name)
+    params.require(:collection).permit(:name, :publication, post_ids: [])
   end
 end

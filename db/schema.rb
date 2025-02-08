@@ -10,14 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_06_044325) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_08_004816) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "collection_posts", force: :cascade do |t|
+    t.bigint "collection_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_collection_posts_on_collection_id"
+    t.index ["post_id"], name: "index_collection_posts_on_post_id"
+  end
 
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "publication"
     t.index ["name"], name: "index_collections_on_name", unique: true
   end
 
@@ -65,6 +75,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_044325) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  add_foreign_key "collection_posts", "collections"
+  add_foreign_key "collection_posts", "posts"
   add_foreign_key "post_collections", "collections"
   add_foreign_key "post_collections", "posts"
   add_foreign_key "post_tags", "posts"
