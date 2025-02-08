@@ -19,12 +19,12 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  has_many :collection_posts, dependent: :destroy
+  has_many :collections, through: :collection_posts
+
   # Validations
   accepts_nested_attributes_for :tags, allow_destroy: true, reject_if: :all_blank
   validates_associated :tags
-
-  has_many :collection_posts, dependent: :destroy
-  has_many :collections, through: :collection_posts
 
   # Scopes
   scope :published, -> { where(published: true) }
@@ -36,5 +36,13 @@ class Post < ApplicationRecord
 
   def generate_slug
     self.slug = title.parameterize
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title description body]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[tags collections]
   end
 end

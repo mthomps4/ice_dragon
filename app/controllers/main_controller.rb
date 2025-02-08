@@ -3,13 +3,19 @@ class MainController < ApplicationController
   end
 
   def digital_forge
-    @posts = Post.published.where(publication: Post::PUBLICATIONS[:digital_forge])
-                 .order(published_on: :desc)
+    @q = Post.published.where(publication: Post::PUBLICATIONS[:digital_forge])
+             .order(published_on: :desc)
+             .ransack(params[:q])
+    @posts = @q.result(distinct: false)
+               .page(params[:page])
   end
 
   def hand_tool_armory
-    @posts = Post.published.where(publication: Post::PUBLICATIONS[:hand_tool_armory])
-                 .order(published_on: :desc)
+    @q = Post.published.where(publication: Post::PUBLICATIONS[:hand_tool_armory])
+             .order(published_on: :desc)
+             .ransack(params[:q])
+    @posts = @q.result(distinct: false)
+               .page(params[:page])
   end
 
   def post

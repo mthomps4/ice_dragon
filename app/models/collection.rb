@@ -9,4 +9,12 @@ class Collection < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   accepts_nested_attributes_for :collection_posts, allow_destroy: true
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[posts]
+  end
 end
