@@ -6,9 +6,7 @@
         Published on <%= @post.published_on.strftime("%B %d, %Y") %>
       </div>
     <% end %>
-    <div class="mb-8 markdown-body prose">
-      <%= PostsHelper.render_markdown(@post.body) %>
-    </div>
+    <%= render "shared/markdown_post" %>
     <footer class="border-t pt-4 mt-8">
       <% if @post.tags.any? %>
         <div class="mb-4">
