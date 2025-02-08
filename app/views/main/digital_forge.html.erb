@@ -1,0 +1,26 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="bg-white shadow overflow-hidden rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+      <h1 class="text-3xl font-bold text-gray-900">Digital Forge</h1>
+      <p class="mt-2 text-sm text-gray-500">Software development, code snippets, and other digital projects</p>
+    </div>
+    <div class="px-4 py-5 sm:px-6">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <% @posts.each do |post| %>
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-6">
+              <h2 class="text-xl font-semibold text-gray-900"><%= post.title %></h2>
+              <div class="mt-2 text-sm text-gray-600">
+                <time datetime="<%= post.published_on.strftime('%Y-%m-%d') %>">
+                  <%= post.published_on.strftime('%B %d, %Y') %>
+                </time>
+              </div>
+              <p class="mt-3 text-gray-600"><%= truncate(post.description, length: 150) %></p>
+              <%= link_to "Read more", post_path(post.slug), class: "mt-4 inline-block text-indigo-600 hover:text-indigo-900" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

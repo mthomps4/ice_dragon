@@ -1,0 +1,19 @@
+<header class="bg-gray-800 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex-shrink-0">
+        <%= link_to root_path, class: "text-white font-bold text-xl" do %>
+          Ice Dragon
+        <% end %>
+      </div>
+      <nav class="ml-10 flex space-x-4">
+        <%= link_to "About", root_path,
+              class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+        <%= link_to "Digital Forge", digital_forge_path,
+              class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+        <%= link_to "Hand Tool Armory", hand_tool_armory_path,
+              class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+      </nav>
+    </div>
+  </div>
+</header>

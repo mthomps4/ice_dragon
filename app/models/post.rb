@@ -1,6 +1,12 @@
 class Post < ApplicationRecord
-  PUBLICATION_VALUES = %w[digital_forge hand_tool_armory].freeze
+  PUBLICATIONS = {
+    digital_forge: "digital_forge",
+    hand_tool_armory: "hand_tool_armory"
+  }.freeze
+  PUBLICATION_VALUES = PUBLICATIONS.values.freeze
   PUBLICATION_OPTIONS = PUBLICATION_VALUES.map { |value| [ value.titleize, value ] }
+
+  before_validation :generate_slug
 
   # Validations
   validates :title, presence: true
@@ -26,5 +32,9 @@ class Post < ApplicationRecord
   # Methods
   def set_published_on
     self.published_on = Time.current if published?
+  end
+
+  def generate_slug
+    self.slug = title.parameterize
   end
 end

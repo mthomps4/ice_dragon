@@ -1,0 +1,39 @@
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <article class="prose lg:prose-xl">
+    <h1 class="text-3xl font-bold mb-4"><%= @post.title %></h1>
+    <% if @post.published_on.present? %>
+      <div class="text-gray-600 mb-6">
+        Published on <%= @post.published_on.strftime("%B %d, %Y") %>
+      </div>
+    <% end %>
+    <div class="mb-8">
+      <%= @post.body %>
+    </div>
+    <footer class="border-t pt-4 mt-8">
+      <% if @post.tags.any? %>
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold mb-2">Tags</h3>
+          <div class="flex flex-wrap gap-2">
+            <% @post.tags.each do |tag| %>
+              <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+                <%= tag.name %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <% if @post.collections.any? %>
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Collections</h3>
+          <div class="flex flex-wrap gap-2">
+            <% @post.collections.each do |collection| %>
+              <span class="inline-block bg-indigo-100 rounded-full px-3 py-1 text-sm font-semibold text-indigo-700">
+                <%= collection.name %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </footer>
+  </article>
+</div>

@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "posts#index"
+  root "main#about"
+
+  get "digital-forge" => "main#digital_forge"
+  get "hand-tool-armory" => "main#hand_tool_armory"
+  get "post/:slug" => "main#post", as: :post
 
   namespace :admin do
     constraints(lambda { |req|

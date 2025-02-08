@@ -25,6 +25,10 @@
           <dt class="text-sm font-medium text-gray-500">Last Updated</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= @post.updated_at.strftime("%B %d, %Y at %I:%M %p") %></dd>
         </div>
+        <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
+          <dt class="text-sm font-medium text-gray-500">Slug</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:col-span-2"><%= link_to @post.slug, post_path(@post.slug), class: "text-indigo-500 hover:text-indigo-700" %></dd>
+        </div>
         <div class="py-4">
           <dt class="text-sm font-medium text-gray-500 mb-2">Body</dt>
           <dd class="mt-1 text-sm text-gray-900 prose max-w-none"><%= @post.body %></dd>
