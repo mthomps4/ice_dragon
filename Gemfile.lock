@@ -304,9 +304,11 @@ GEM
       ffi (~> 1.0)
     rdoc (6.11.0)
       psych (>= 4.0.0)
+    redcarpet (3.6.0)
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
+    rouge (4.5.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -444,6 +446,8 @@ DEPENDENCIES
   rails (~> 8.0.1)
   rails-controller-testing
   ransack
+  redcarpet
+  rouge
   rspec
   rspec-rails
   rubocop-rails-omakase

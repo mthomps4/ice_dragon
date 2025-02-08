@@ -46,6 +46,10 @@ gem "thruster", require: false
 gem "kaminari"
 gem "ransack"
 
+# Markdown Rendering
+gem "redcarpet"
+gem "rouge"
+
 group :development, :test do
   gem "dotenv-rails"
   gem "pry"
