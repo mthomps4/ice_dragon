@@ -18,3 +18,6 @@ application.register("flash", FlashController);
 
 import DarkModeController from "./dark_mode_controller";
 application.register("dark-mode", DarkModeController);
+
+import RevealController from "./reveal_controller";
+application.register("reveal", RevealController);
