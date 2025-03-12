@@ -15,3 +15,6 @@ application.register("type-ahead-select", TypeAheadSelectController);
 
 import FlashController from "./flash_controller";
 application.register("flash", FlashController);
+
+import DarkModeController from "./dark_mode_controller";
+application.register("dark-mode", DarkModeController);

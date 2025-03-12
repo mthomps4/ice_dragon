@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "main#about"
 
-  get "digital-forge" => "main#digital_forge"
-  get "hand-tool-armory" => "main#hand_tool_armory"
+  get "blog" => "main#blog"
   get "post/:slug" => "main#post", as: :post
 
   namespace :admin do

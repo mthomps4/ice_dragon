@@ -17,6 +17,7 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= render('shared/dark_mode_checker') %>
   </head>
   <body>
     <%= render 'shared/header' %>
