@@ -3,7 +3,7 @@
     <h3 class="font-semibold my-2">Tags</h3>
     <div class="flex flex-wrap gap-2">
       <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, blog_path(q: { tags_id_eq: tag.id }), class: "no-underline inline-block bg-green-700 text-white rounded-full px-3 py-1 text-sm font-semibold hover:bg-green-400 dark:bg-green-400 dark:text-green-900 dark:hover:bg-green-300" %>
+        <%= link_to tag.name, blog_path(q: { tags_id_eq: tag.id }), class: "pill" %>
       <% end %>
     </div>
   <% end %>
@@ -11,6 +11,7 @@
     <h3 class="font-semibold my-2">Related Posts</h3>
     <ul class="list-disc list-inside text-sm">
       <% post.collections.each do |collection| %>
+        <h3 class="font-semibold my-2"><%= collection.name %></h3>
         <% collection.posts.each do |related_post| %>
           <li>
             <%= link_to related_post.title, post_path(related_post.slug), class: "text-green-700 dark:text-green-400 underline italic" %>

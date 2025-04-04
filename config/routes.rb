@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get "blog" => "main#blog"
   get "post/:slug" => "main#post", as: :post
+  get "search_posts" => "main#search_posts"
 
   namespace :admin do
     constraints(lambda { |req|

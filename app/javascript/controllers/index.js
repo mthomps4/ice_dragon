@@ -21,3 +21,9 @@ application.register("dark-mode", DarkModeController);
 
 import RevealController from "./reveal_controller";
 application.register("reveal", RevealController);
+
+import ModalController from "./modal_controller";
+application.register("modal", ModalController);
+
+import SearchController from "./search_controller";
+application.register("search", SearchController);

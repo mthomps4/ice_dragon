@@ -15,14 +15,23 @@ html, body {
   @apply dark:bg-slate-700 dark:text-slate-200;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+/* .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6, .prose p {
   @apply dark:text-slate-100;
 }
 
-a, .link {
+.prose a, .prose .link {
   @apply text-green-400 hover:text-green-300;
 }
 
-a:hover, .link:hover {
+.prose a:hover, .prose .link:hover {
   @apply text-green-300;
 }
+
+
+.pill {
+  @apply px-3 py-1 rounded-full bg-green-300 text-green-800 hover:bg-green-400;
+}
+
+.link {
+  @apply text-green-700 dark:text-green-400 hover:underline;
+} */

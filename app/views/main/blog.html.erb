@@ -6,18 +6,6 @@
         <p class="mt-2 text-sm">Software development, code snippets, and other digital projects</p>
       </div>
       <div class="px-4 py-5 sm:px-6">
-        <%= search_form_for @q, url: blog_path do |f| %>
-          <%# TODO: Make this an autocomplete search with groups %>
-          <div class="flex justify-center items-center">
-            <%= f.search_field :title_or_description_or_body_cont,
-            placeholder: "Search posts, tags, and collections...",
-            class: "w-3/4 rounded-l-md focus:border-green-500 focus:ring-green-500 text-sm text-black" %>
-            <%= f.submit "Search",
-              class: "w-fit px-4 py-2 rounded-r-md focus:border-green-500 focus:ring-green-500 text-sm bg-green-600 text-white hover:bg-green-700" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="px-4 py-5 sm:px-6">
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <% @posts.each do |post| %>
             <%= link_to post_path(post.slug) do %>
@@ -39,16 +27,14 @@
         <%= page_entries_info @posts, entry_name: "post" %>
       </div>
     </article>
-    <aside class="lg:w-1/4 my-10 border-l-[1px] border-slate-300 dark:border-slate-500 pl-4">
+    <aside class="lg:w-1/4 my-10 pl-4">
       <h3 class="text-lg font-semibold mb-4">Tags</h3>
-      <div class="mb-2">
-        <% Tag.all.each do |tag| %>
-          <%= link_to tag.name, blog_path(q: { tags_id_eq: tag.id }), class: "hover:underline" %>
-        <% end %>
-      </div>
-      <h3 class="text-lg font-semibold mb-4">Collections</h3>
+      <% Tag.all.each do |tag| %>
+        <%= link_to tag.name, blog_path(q: { tags_id_eq: tag.id }), class: "pill" %>
+      <% end %>
+      <h3 class="text-lg font-semibold my-4">Collections</h3>
       <% Collection.all.each do |collection| %>
-        <%= link_to collection.name, blog_path(q: { collections_id_eq: collection.id }) %>
+        <%= link_to collection.name, blog_path(q: { collections_id_eq: collection.id }), class: "link" %>
       <% end %>
     </aside>
   </div>
