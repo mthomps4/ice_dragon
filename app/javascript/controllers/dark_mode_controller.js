@@ -4,38 +4,33 @@ export default class extends Controller {
   static targets = ["lightIcon", "darkIcon", "themeToggle"];
 
   connect() {
-    if (
-      localStorage.getItem("theme") === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
+    this.updateTheme(this.isDarkMode());
+  }
+
+  isDarkMode() {
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      return theme === "dark";
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  updateTheme(isDark) {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
       this.lightIconTarget.classList.remove("hidden");
+      this.darkIconTarget.classList.add("hidden");
+      localStorage.setItem("theme", "dark");
     } else {
+      document.documentElement.classList.remove("dark");
       this.darkIconTarget.classList.remove("hidden");
+      this.lightIconTarget.classList.add("hidden");
+      localStorage.setItem("theme", "light");
     }
   }
 
   toggleTheme() {
-    this.lightIconTarget.classList.toggle("hidden");
-    this.darkIconTarget.classList.toggle("hidden");
-    if (localStorage.getItem("theme")) {
-      if (localStorage.getItem("theme") === "light") {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-
-      // if NOT set via local storage previously
-    } else {
-      if (document.documentElement.classList.contains("dark")) {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      } else {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      }
-    }
+    const isDark = !this.isDarkMode();
+    this.updateTheme(isDark);
   }
 }

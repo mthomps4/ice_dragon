@@ -6,14 +6,19 @@ class Post < ApplicationRecord
   PUBLICATION_VALUES = PUBLICATIONS.values.freeze
   PUBLICATION_OPTIONS = PUBLICATION_VALUES.map { |value| [ value.titleize, value ] }
 
-  before_validation :generate_slug
 
   # Validations
   validates :title, presence: true
   validates :publication, inclusion: { in: PUBLICATION_VALUES }
+  validates :meta_title, presence: true
+  validates :meta_description, presence: true
 
   # Callbacks
+  before_validation :generate_slug
   before_validation :set_published_on, if: -> { published? }
+  before_validation :set_meta_title, if: -> { meta_title.blank? }
+  before_validation :set_meta_description, if: -> { meta_description.blank? }
+  before_validation :unset_published, if: -> { archived? }
 
   # Associations
   has_many :post_tags, dependent: :destroy
@@ -30,12 +35,30 @@ class Post < ApplicationRecord
   scope :published, -> { where(published: true) }
 
   # Methods
+  def unset_published
+    self.published = false if archived?
+  end
+
   def set_published_on
     self.published_on = Time.current if published?
   end
 
+  def set_meta_title
+    self.meta_title = title if meta_title.blank?
+  end
+
+  def set_meta_description
+    self.meta_description = description if meta_description.blank?
+  end
+
   def generate_slug
     self.slug = title.parameterize
+  end
+
+  def status
+    return "Archived" if archived?
+    return "Published" if published?
+    "Draft"
   end
 
   def self.ransackable_attributes(auth_object = nil)

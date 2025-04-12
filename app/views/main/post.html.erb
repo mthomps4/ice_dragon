@@ -1,3 +1,53 @@
+<% content_for :title do %>
+  <%= @post.meta_title %>
+<% end %>
+<% content_for :head do %>
+  <%# Basic SEO %>
+  <meta name="title" content="<%= @post.meta_title %>">
+  <meta name="description" content="<%= @post.meta_description %>">
+  <% if @post.canonical_url.present? %>
+    <link rel="canonical" href="<%= @post.canonical_url %>">
+  <% else %>
+    <link rel="canonical" href="<%= post_url(@post) %>">
+  <% end %>
+  <%# Open Graph / Facebook %>
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="<%= post_url(@post) %>">
+  <meta property="og:title" content="<%= @post.meta_title %>">
+  <meta property="og:description" content="<%= @post.meta_description %>">
+  <meta property="og:site_name" content="Ice Dragon">
+  <% if @post.published_on %>
+    <meta property="article:published_time" content="<%= @post.published_on.iso8601 %>">
+    <meta property="article:modified_time" content="<%= @post.updated_at.iso8601 %>">
+  <% end %>
+  <% @post.tags.each do |tag| %>
+    <meta property="article:tag" content="<%= tag.name %>">
+  <% end %>
+  <%# Twitter %>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= @post.meta_title %>">
+  <meta name="twitter:description" content="<%= @post.meta_description %>">
+  <%# Additional SEO %>
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Matthew Thompson">
+  <meta name="keywords" content="<%= @post.tags.map(&:name).join(', ') %>">
+  <%# Structured Data / JSON-LD %>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "<%= @post.meta_title %>",
+      "description": "<%= @post.meta_description %>",
+      "url": "<%= post_url(@post) %>",
+      "datePublished": "<%= @post.published_on&.iso8601 %>",
+      "dateModified": "<%= @post.updated_at.iso8601 %>",
+      "author": {
+        "@type": "Person",
+        "name": "Matthew Thompson"
+      }
+    }
+  </script>
+<% end %>
 <div class="max-w-4xl mx-auto px-4 py-8">
   <h1 class="text-3xl font-bold mb-4"><%= @post.title %></h1>
   <% if @post.published_on.present? %>

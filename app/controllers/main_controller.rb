@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+  before_action :set_tags_and_collections
   def about
   end
 
@@ -20,10 +21,17 @@ class MainController < ApplicationController
              .order(published_on: :desc)
              .ransack(title_or_description_or_body_cont: @search_param)
 
-    @results = @q.result(distinct: false)
+    @results = @q.result(distinct: true)
 
     respond_to do |format|
-      format.turbo_stream { render }
+      format.turbo_stream { render "search_posts" }
     end
+  end
+
+  private
+
+  def set_tags_and_collections
+    @tags = PostTag.includes(:tag).map(&:tag).uniq
+    @collections = CollectionPost.includes(:collection).map(&:collection).uniq
   end
 end

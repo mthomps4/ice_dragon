@@ -21,8 +21,8 @@
                 <div class="text-sm font-medium text-gray-900"><%= post.title %></div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <%= post.published? ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' %>">
-                  <%= post.published? ? 'Published' : 'Draft' %>
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <%= post.status == 'Published' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' %>">
+                  <%= post.status %>
                 </span>
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -31,7 +31,6 @@
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <%= link_to 'View', admin_post_path(post), class: 'text-indigo-600 hover:text-indigo-900' %>
                 <%= link_to 'Edit', edit_admin_post_path(post), class: 'ml-3 text-indigo-600 hover:text-indigo-900' %>
-                <%= link_to 'Delete', admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-3 text-red-600 hover:text-red-900' %>
               </td>
             </tr>
           <% end %>

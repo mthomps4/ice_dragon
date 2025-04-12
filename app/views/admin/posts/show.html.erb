@@ -12,8 +12,8 @@
         <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4">
           <dt class="text-sm font-medium text-gray-500">Status</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:col-span-2">
-            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <%= @post.published? ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' %>">
-              <%= @post.published? ? 'Published' : 'Draft' %>
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <%= @post.status == 'Published' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' %>">
+              <%= @post.status %>
             </span>
           </dd>
         </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="py-4">
           <dt class="text-sm font-medium text-gray-500 mb-2">Body</dt>
-          <dd class="mt-1 text-sm text-gray-900 prose max-w-none"><%= @post.body %></dd>
+          <dd class="mt-1 text-sm text-gray-900 prose max-w-none truncate line-clamp-3"><%= @post.body %></dd>
         </div>
         <div class="py-4">
           <dt class="text-sm font-medium text-gray-500 mb-2">Tags</dt>

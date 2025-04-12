@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_08_010855) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_12_202003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -62,6 +62,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_08_010855) do
     t.datetime "updated_at", null: false
     t.boolean "archived", default: false
     t.string "slug"
+    t.string "meta_title", default: "", null: false
+    t.string "meta_description", default: "", null: false
+    t.string "keywords", default: "", null: false
+    t.string "featured_image"
+    t.string "featured_alt_text", default: "post featured image", null: false
+    t.string "canonical_url"
     t.index ["description"], name: "index_posts_on_description"
     t.index ["publication"], name: "index_posts_on_publication"
     t.index ["published"], name: "index_posts_on_published"
