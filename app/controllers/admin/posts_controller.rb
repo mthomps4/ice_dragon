@@ -55,6 +55,8 @@ class Admin::PostsController < AdminController
       :keywords,
       :featured_image,
       :featured_alt_text,
+      :og_image,
+      :og_image_alt_text,
       :canonical_url,
       :body,
       :published,
