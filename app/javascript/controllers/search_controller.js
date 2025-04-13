@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import { get } from "@rails/request.js";
 
 export default class extends Controller {
-  static values = { url: String };
+  static values = { url: String, turboFrame: String };
 
   connect() {
     this.timeout = null;
@@ -14,9 +14,14 @@ export default class extends Controller {
     const query = event.target.value.trim();
 
     this.timeout = setTimeout(() => {
-      get(`${this.urlValue}?q=${encodeURIComponent(query)}`, {
-        responseKind: "turbo-stream",
-      });
+      get(
+        `${this.urlValue}?q=${encodeURIComponent(query)}&turbo_frame_target=${
+          this.turboFrameValue
+        }`,
+        {
+          responseKind: "turbo-stream",
+        }
+      );
     }, 500);
   }
 }

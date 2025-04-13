@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   PUBLICATION_OPTIONS = PUBLICATION_VALUES.map { |value| [ value.titleize, value ] }
 
   DEFAULT_OG_IMAGE = "https://ik.imagekit.io/mthomps4/site/default_og.png"
+  DEFAULT_FEATURED_IMAGE = "https://ik.imagekit.io/mthomps4/site/featured_default.png"
 
   # Validations
   validates :title, presence: true
@@ -23,6 +24,7 @@ class Post < ApplicationRecord
   before_validation :set_meta_description, if: -> { meta_description.blank? }
   before_validation :unset_published, if: -> { archived? }
   before_validation :set_og_image, if: -> { og_image.blank? }
+  before_validation :set_featured_image, if: -> { featured_image.blank? }
 
   # Associations
   has_many :post_tags, dependent: :destroy
@@ -39,6 +41,10 @@ class Post < ApplicationRecord
   scope :published, -> { where(published: true) }
 
   # Methods
+  def set_featured_image
+    self.featured_image = DEFAULT_FEATURED_IMAGE if featured_image.blank?
+  end
+
   def set_og_image
     self.og_image = DEFAULT_OG_IMAGE if og_image.blank?
   end

@@ -3,7 +3,7 @@
     <h3 class="font-semibold my-2">Tags</h3>
     <div class="flex flex-wrap gap-2">
       <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, blog_path(q: { tags_id_eq: tag.id }), class: "pill" %>
+        <%= link_to tag.name, blog_path(q: { tags_id_eq: tag.id }), class: "link" %>
       <% end %>
     </div>
   <% end %>
@@ -14,7 +14,7 @@
         <h3 class="font-semibold my-2"><%= collection.name %></h3>
         <% collection.posts.each do |related_post| %>
           <li>
-            <%= link_to related_post.title, post_path(related_post.slug), class: "text-green-700 dark:text-green-400 underline italic" %>
+            <%= link_to related_post.title, post_path(related_post.slug), class: "link" %>
           </li>
         <% end %>
       <% end %>

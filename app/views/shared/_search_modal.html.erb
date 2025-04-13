@@ -1,0 +1,52 @@
+<% show_full_bar = show_full_bar || false %>
+<div data-controller="modal" class="inline">
+  <span data-action="click->modal#open">
+    <div class="text-slate-300 hover:text-green-400 cursor-pointer group">
+      <% if show_full_bar %>
+        <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-100 dark:bg-slate-600 border-[1px] border-slate-200 dark:border-slate-500 group-hover:border-green-400">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+          <p>Search posts...</p>
+        </div>
+      <%else%>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+      <%end%>
+    </div>
+  </span>
+  <%= render "shared/modal" do %>
+    <% search_id = "search-#{SecureRandom.hex(8)}" %>
+    <div class="text-black dark:text-white">
+      <div class="flex flex-col gap-4">
+        <div class="relative">
+          <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-slate-400">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search posts..."
+            data-controller="search"
+            data-action="input->search#search"
+            data-search-url-value="<%= search_posts_path %>"
+            data-search-turbo-frame-value="<%= search_id %>"
+            class="w-full pl-10 pr-4 py-2 text-sm bg-slate-100 dark:bg-slate-700 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            autofocus
+            />
+          </div>
+          <%= turbo_frame_tag search_id do %>
+            <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">
+              <p>Type to search...</p>
+            </div>
+          <% end %>
+          <%= render "shared/tags", tags: @tags %>
+          <%= render "shared/collections", collections: @collections %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

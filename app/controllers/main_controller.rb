@@ -17,11 +17,14 @@ class MainController < ApplicationController
 
   def search_posts
     @search_param = params[:q]
+    @turbo_frame_target = params[:turbo_frame_target] || "search-results"
     @q = Post.published
              .order(published_on: :desc)
              .ransack(title_or_description_or_body_cont: @search_param)
 
     @results = @q.result(distinct: true)
+
+    Rails.logger.info("\n\n\n\n turbo_frame_target: #{@turbo_frame_target} \n\n\n\n")
 
     respond_to do |format|
       format.turbo_stream { render "search_posts" }
