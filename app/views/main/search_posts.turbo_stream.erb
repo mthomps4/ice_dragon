@@ -4,7 +4,7 @@
       <% @results.each do |result| %>
         <%= link_to post_path(result.slug), data: { turbo_frame: "_top" } do %>
           <div class="flex items-center gap-2 border-[1px] border-slate-300 rounded-md p-2 hover:bg-slate-100">
-            <p>Image here...</p>
+            <%= image_tag result.featured_image, class: "w-16 aspect-video object-cover rounded-md" %>
             <div>
               <h3 class="text-lg font-bold"><%= result.title %></h3>
               <p class="text-sm"><%= result.description %></p>

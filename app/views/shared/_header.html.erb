@@ -1,48 +1,25 @@
-<header class="bg-gray-800 text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <div class="flex-shrink-0">
-        <%= link_to root_path, class: "text-white font-bold text-xl" do %>
-          Matthew Thompson
-        <% end %>
+<!-- mobile header -->
+<header class="bg-slate-900 text-white flex flex-col justify-center items-center">
+  <%= link_to root_path, class: "my-4" do %>
+    <div class="flex justify-center items-center gap-4">
+      <%= image_tag "https://ik.imagekit.io/mthomps4/Avatars/portrait.png", class: "w-16 h-16 rounded-full border-[1px] border-slate-300" %>
+      <div class="flex flex-col text-center">
+        <h1 class="text-white font-bold text-3xl">Matthew Thompson</h1>
+        <p class="text-xs text-slate-300"> Software Architect | Craftsman | Mentor</p>
       </div>
-      <!-- double flex for shared model and dark mode toggle -->
-      <nav class="flex items-center gap-6">
-        <div class="flex items-center gap-6">
-          <%= link_to "About", root_path, class: "text-gray-300 hover:text-white" %>
-          <%= link_to "Blog", blog_path, class: "text-gray-300 hover:text-white" %>
-          <%= render "shared/search_modal", show_full_bar: false %>
-          <div data-controller="dark-mode">
-            <button
-              id="dark-mode-toggle"
-              type="button"
-              title="Toggle dark mode"
-              data-dark-mode-target="themeToggle"
-              data-action="click->dark-mode#toggleTheme"
-              class="flex items-center justify-center"
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                class="size-6"
-                fill="currentColor"
-                data-dark-mode-target="darkIcon"
-              >
-                <path fill-rule="evenodd" d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 116.647 1.921a.75.75 0 01.808.083z" clip-rule="evenodd" />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                class="size-6 hidden"
-                fill="currentColor"
-                data-dark-mode-target="lightIcon"
-              >
-                <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6zM15.657 5.404a.75.75 0 10-1.06-1.06l-1.061 1.06a.75.75 0 001.06 1.06l1.06-1.06zM6.464 14.596a.75.75 0 10-1.06-1.06l-1.06 1.06a.75.75 0 001.06 1.06l1.06-1.06zM18 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zM5 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 015 10zM14.596 15.657a.75.75 0 001.06-1.06l-1.06-1.061a.75.75 0 10-1.06 1.06l1.06 1.06zM5.404 6.464a.75.75 0 001.06-1.06l-1.06-1.06a.75.75 0 10-1.061 1.06l1.06 1.06z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
     </div>
-  </div>
+  <% end %>
+  <nav class="w-full bg-slate-900 py-4 px-2">
+    <div class="max-w-5xl mx-auto flex justify-around items-center gap-6">
+      <%= link_to "About", root_path, class: "text-slate-300 hover:text-green-400" %>
+      <%= link_to "Blog", blog_path, class: "text-slate-300 hover:text-green-400" %>
+      <%= link_to "Connect", connect_path, class: "text-slate-300 hover:text-green-400" %>
+      <%= render "shared/dark_mode_toggle" %>
+    </div>
+  </nav>
 </header>
+<div class="w-full max-w-7xl mx-auto">
+  <div class="w-full my-4 px-4">
+    <%= render "shared/search_modal", show_full_bar: true %>
+  </div>
+</div>

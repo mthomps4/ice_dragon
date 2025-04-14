@@ -1,13 +1,13 @@
 <% show_full_bar = show_full_bar || false %>
 <div data-controller="modal" class="inline">
   <span data-action="click->modal#open">
-    <div class="text-slate-300 hover:text-green-400 cursor-pointer group">
+    <div class="text-slate-500 dark:text-slate-300 hover:text-green-400 cursor-pointer group">
       <% if show_full_bar %>
         <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-100 dark:bg-slate-600 border-[1px] border-slate-200 dark:border-slate-500 group-hover:border-green-400">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
           </svg>
-          <p>Search posts...</p>
+          <p>Search posts and snippets...</p>
         </div>
       <%else%>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -29,7 +29,7 @@
           <input
             type="text"
             id="search-input"
-            placeholder="Search posts..."
+            placeholder="Search posts and snippets..."
             data-controller="search"
             data-action="input->search#search"
             data-search-url-value="<%= search_posts_path %>"
@@ -40,7 +40,6 @@
           </div>
           <%= turbo_frame_tag search_id do %>
             <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">
-              <p>Type to search...</p>
             </div>
           <% end %>
           <%= render "shared/tags", tags: @tags %>

@@ -15,6 +15,9 @@ class MainController < ApplicationController
     @post = Post.published.find_by(slug: params[:slug])
   end
 
+  def connect
+  end
+
   def search_posts
     @search_param = params[:q]
     @turbo_frame_target = params[:turbo_frame_target] || "search-results"

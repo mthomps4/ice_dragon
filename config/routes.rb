@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root "main#about"
 
   get "blog" => "main#blog"
+  get "connect" => "main#connect"
   get "post/:slug" => "main#post", as: :post
   get "search_posts" => "main#search_posts"
 
