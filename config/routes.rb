@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "post/:slug" => "main#post", as: :post
   get "search_posts" => "main#search_posts"
 
+  get "resume" => "main#resume", constraints: { user_agent: /\b(?!bot|crawler|spider)\b/i }
+
   namespace :admin do
     constraints(lambda { |req|
       req.user_agent !~ /\b(bot|crawler|spider)\b/i

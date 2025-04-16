@@ -18,6 +18,10 @@ class MainController < ApplicationController
   def connect
   end
 
+  def resume
+    @markdown = File.read(Rails.root.join("app", "assets", "content", "resume.md"))
+  end
+
   def search_posts
     @search_param = params[:q]
     @turbo_frame_target = params[:turbo_frame_target] || "search-results"
