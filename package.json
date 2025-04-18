@@ -15,10 +15,8 @@
     "@hotwired/turbo-rails": "^8.0.12",
     "@rails/request.js": "^0.0.11",
     "@tailwindcss/forms": "^0.5.10",
-    "algoliasearch": "^5.23.4",
     "autoprefixer": "^10.4.20",
     "imask": "^7.6.1",
-    "instantsearch.js": "^4.78.1",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "tom-select": "^2.4.2"

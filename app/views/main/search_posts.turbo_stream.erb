@@ -6,8 +6,8 @@
           <div class="flex items-center gap-2 border-[1px] border-slate-300 rounded-md p-2 hover:bg-slate-100">
             <%= image_tag result.featured_image, class: "w-16 aspect-video object-cover rounded-md" %>
             <div>
-              <h3 class="text-lg font-bold"><%= result.title %></h3>
-              <p class="text-sm"><%= result.description %></p>
+              <h3 class="text-md md:text-lg font-bold"><%= result.title %></h3>
+              <p class="text-sm md:text-base"><%= result.description %></p>
             </div>
           </div>
         <% end %>
