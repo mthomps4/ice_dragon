@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  include AlgoliaSearch
+
   PUBLICATIONS = {
     digital_forge: "digital_forge",
     hand_tool_armory: "hand_tool_armory"
@@ -8,6 +10,26 @@ class Post < ApplicationRecord
 
   DEFAULT_OG_IMAGE = "https://ik.imagekit.io/mthomps4/site/default_og.png"
   DEFAULT_FEATURED_IMAGE = "https://ik.imagekit.io/mthomps4/site/featured_default.png"
+
+  algoliasearch if: :published,
+  per_page: 15,
+    enqueue: true,
+    batch_size: 15,
+    attributes_for_faceting: [
+      "tags.name",
+      "collections.name"
+    ] do
+      attribute :title
+      attribute :description
+      attribute :body
+      attribute :featured_image
+      attribute :post_tags do
+        tags.map(&:name)
+      end
+      attribute :post_collections do
+        collections.map(&:name)
+      end
+    end
 
   # Validations
   validates :title, presence: true

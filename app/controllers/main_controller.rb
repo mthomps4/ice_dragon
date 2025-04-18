@@ -31,8 +31,6 @@ class MainController < ApplicationController
 
     @results = @q.result(distinct: true)
 
-    Rails.logger.info("\n\n\n\n turbo_frame_target: #{@turbo_frame_target} \n\n\n\n")
-
     respond_to do |format|
       format.turbo_stream { render "search_posts" }
     end

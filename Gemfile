@@ -50,6 +50,8 @@ gem "ransack"
 gem "redcarpet"
 gem "rouge"
 
+gem "algoliasearch-rails"
+
 group :development, :test do
   gem "dotenv-rails"
   gem "pry"

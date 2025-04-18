@@ -27,3 +27,6 @@ application.register("modal", ModalController);
 
 import SearchController from "./search_controller";
 application.register("search", SearchController);
+
+import AlgoliaSearchController from "./algolia_search_controller";
+application.register("algolia-search", AlgoliaSearchController);
