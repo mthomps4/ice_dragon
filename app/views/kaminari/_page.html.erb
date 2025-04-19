@@ -7,11 +7,12 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<span class="page inline-flex">
-  <%= link_to page, url, {
+<span class="page<%= ' current' if page.current? %> inline-flex">
+  <%= link_to_unless page.current?, page, url, {
     remote: remote,
-    class: "px-3 py-2 border-t border-b #{page.current? ?
-      'bg-indigo-50 border-indigo-500 text-indigo-600 z-10' :
-      'bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-900'}"
+    rel: page.rel,
+    class: "min-w-[2.5rem] text-sm font-medium flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 #{page.current? ?
+      'bg-slate-800 text-white shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-100 dark:text-slate-900' :
+      'text-slate-700 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500'}"
   } %>
 </span>

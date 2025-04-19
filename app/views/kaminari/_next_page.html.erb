@@ -9,8 +9,8 @@
 <span class="next inline-flex">
   <%= link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, {
     remote: remote,
-    class: "px-3 py-2 border border-gray-300 -ml-px #{current_page.last? ?
-      'bg-gray-100 text-gray-500 cursor-not-allowed' :
-      'bg-white text-gray-700 hover:bg-gray-50 hover:text-gray-900'}"
+    class: "min-w-[2.5rem] text-sm font-medium flex items-center justify-center px-3 py-2 rounded-md transition-all duration-200 #{current_page.last? ?
+      'bg-slate-50 text-slate-400 cursor-not-allowed dark:bg-slate-800 dark:text-slate-600' :
+      'text-slate-700 hover:bg-slate-100 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-500'}"
   } %>
 </span>
