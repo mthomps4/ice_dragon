@@ -2,44 +2,6 @@
 # yarn lockfile v1
 
 
-"@algolia/autocomplete-core@1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-core/-/autocomplete-core-1.18.1.tgz#7abafd393126c0c5491ced8498a493173b238abf"
-  integrity sha512-+lOAwRkvxTt24AXNu3pT0EfCEh1ZOQkKlrgFa0Ji2jxSbY2WW3gb1k39JBPyXcCLlivdxYPXREdg8ImAF2Nw9Q==
-  dependencies:
-    "@algolia/autocomplete-plugin-algolia-insights" "1.18.1"
-    "@algolia/autocomplete-shared" "1.18.1"
-
-"@algolia/autocomplete-js@^1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-js/-/autocomplete-js-1.18.1.tgz#a74ca124a433864e154d05e2c2db89b4564dbabe"
-  integrity sha512-uPR+QnN7JU1nbf+m0lrLzSv/ptua72d8EcgWbKN1aacPR9xmdzmuVZoVuHW/Fypgg7ccm7/TlEX98DWnXjffpw==
-  dependencies:
-    "@algolia/autocomplete-core" "1.18.1"
-    "@algolia/autocomplete-preset-algolia" "1.18.1"
-    "@algolia/autocomplete-shared" "1.18.1"
-    htm "^3.1.1"
-    preact "^10.13.2"
-
-"@algolia/autocomplete-plugin-algolia-insights@1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-plugin-algolia-insights/-/autocomplete-plugin-algolia-insights-1.18.1.tgz#3227745d317f1fcf09e75df30606aff8bd275963"
-  integrity sha512-zrl5trCnSHXkBRZwo2VPw4fN5zT3DowgFR6O2Qh0gTni8HB+aQltJYVwBrFeTvZHHFKNY9Cua4Y1KNsYiJ9Rdw==
-  dependencies:
-    "@algolia/autocomplete-shared" "1.18.1"
-
-"@algolia/autocomplete-preset-algolia@1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.18.1.tgz#36fcbf6cbcf7e353613339a4fe015193417ef7be"
-  integrity sha512-ifZV6vfVE9IKNdIe2+JhaBfY78LtnWnYrOFaSxJ7F45ixumSsRw7jCDoHwRxemoceHZzDpaSykSJwcy3XkTswA==
-  dependencies:
-    "@algolia/autocomplete-shared" "1.18.1"
-
-"@algolia/autocomplete-shared@1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@algolia/autocomplete-shared/-/autocomplete-shared-1.18.1.tgz#18175fd76fa01b692bc44b8e6dc63bf68623d031"
-  integrity sha512-vMKFYX5+SX+kIaJSMXOtj6zcMBhAWNyQJkfMrsuK38iJRTwemR23nzUE8qd3rHfWh6Iqgj89vDkf/CuOXDYllA==
-
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
@@ -599,11 +561,6 @@ hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
-htm@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/htm/-/htm-3.1.1.tgz#49266582be0dc66ed2235d5ea892307cc0c24b78"
-  integrity sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==
-
 imask@^7.6.1:
   version "7.6.1"
   resolved "https://registry.yarnpkg.com/imask/-/imask-7.6.1.tgz#04fa4693bf47a4a71bbf7325408e0d058a74dcad"
@@ -868,11 +825,6 @@ postcss@^8.4.47, postcss@^8.4.49:
     nanoid "^3.3.8"
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
-
-preact@^10.13.2:
-  version "10.26.5"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.26.5.tgz#7e1e998af178f139e4c7cb53f441bf2179f44ad2"
-  integrity sha512-fmpDkgfGU6JYux9teDWLhj9mKN55tyepwYbxHgQuIxbWQzgFg5vk7Mrrtfx7xRxq798ynkY4DDDxZr235Kk+4w==
 
 queue-microtask@^1.2.2:
   version "1.2.3"

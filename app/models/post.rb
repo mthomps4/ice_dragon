@@ -22,6 +22,7 @@ class Post < ApplicationRecord
       attribute :title
       attribute :description
       attribute :body
+      attribute :slug
       attribute :featured_image
       attribute :post_tags do
         tags.map(&:name)

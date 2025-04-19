@@ -24,10 +24,27 @@ class MainController < ApplicationController
 
   def search_posts
     @search_param = params[:q]
+    @results = []
     @turbo_frame_target = params[:turbo_frame_target] || "search-results"
 
-    # leverage algolia search indexing
-    @results = Post.search(@search_param)
+    unless @search_param.blank?
+      # leverage algolia search indexing
+      hits = Post.search(@search_param, {
+        snippetEllipsisText: "...",
+        attributesToSnippet: [ "title:20", "description:20", "body:20" ],
+        highlightPreTag: "<em>",
+        highlightPostTag: "</em>"
+      })
+      @results = hits.raw_answer[:hits].map do |hit|
+        {
+          slug: hit[:slug],
+          featured_image: hit[:featured_image],
+          title: hit[:_snippetResult][:title][:value],
+          description: hit[:_snippetResult][:description][:value],
+          body: hit[:_snippetResult][:body][:value]
+        }
+      end
+    end
 
     respond_to do |format|
       format.turbo_stream { render "search_posts" }
